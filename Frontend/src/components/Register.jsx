@@ -32,7 +32,7 @@ const Register = () => {
 
             const data = await response.json();
             if (data.message) {
-                setSuccess(data.message);
+                setSuccess(data.message); 
                 setError(" ");
                 setTimeout(() => {
                     setSuccess("");
