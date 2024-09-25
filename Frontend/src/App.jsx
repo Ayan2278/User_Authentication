@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/register" element={<Register />} /> {/* Register route */}
-        <Route path="/login" element={<Login />} /> {/* Home route */}
+        <Route path="/" element={<Login />} /> {/* Home route */}
         <Route path="/home" element={<Home />} /> {/* Home route */}
         <Route path="/about" element={<About />} /> {/* Home route */}
         <Route path="/contact" element={<Contact />} /> {/* Home route */}
