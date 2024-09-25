@@ -56,13 +56,13 @@ const Register = () => {
     };
 
     return (
-        <div>
-            <div className="card shadow-[0_4px_20px_rgba(0,0,0,0.15)] shadow-[#abafff] rounded-xl">
+        <div className='flex justify-center items-center mx-9 h-[90vh]'>
+            <div className="card w-[400px] h-[350px] flex justify-center items-center flex-col shadow-[0_4px_20px_rgba(0,0,0,0.15)] shadow-[#abafff] rounded-xl">
                 <h2 className='text-3xl my-3'>Register</h2>
-                <form onSubmit={handleSubmit} className='flex flex-col'>
+                <form onSubmit={handleSubmit} className='flex flex-col w-[100%] justify-center'>
                     <input
                         type="text"
-                        className='InputTxt bg-slate-100 px-4 m-3 rounded-lg h-[40px] focus:border-[#abafff] focus:outline-none border border-transparent transition-all duration-200'
+                        className=' InputTxt bg-slate-100 px-4 m-3 rounded-lg h-[40px] focus:border-[#abafff] focus:outline-none border border-transparent transition-all duration-200'
                         name="username"
                         id="username"
                         placeholder='Username'
@@ -81,7 +81,7 @@ const Register = () => {
                     <button className='btn m-3' type='submit'>Register</button>
                     <p className='text-red-500'>{error}</p>
                     <p className='text-green-600'>{success}</p>
-                    <p>Already have an account? <Link to="/Login">Login</Link></p>
+                    <p className=''>Already have an account? <Link to="/Login">Login</Link></p>
                 </form>
             </div>
         </div>

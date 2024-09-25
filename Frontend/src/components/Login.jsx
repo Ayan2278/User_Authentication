@@ -51,10 +51,10 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <div className="card shadow-[0_4px_20px_rgba(0,0,0,0.15)] shadow-[#abafff] rounded-xl">
+        <div className='flex justify-center items-center mx-9 h-[90vh]'>
+            <div className="card w-[400px] h-[350px] flex justify-center items-center flex-col shadow-[0_4px_20px_rgba(0,0,0,0.15)] shadow-[#abafff] rounded-xl">
                 <h2 className='text-3xl my-3'>Login</h2>
-                <form className='flex flex-col' onSubmit={handleSubmit}>
+                <form className='flex flex-col w-[100%] justify-center' onSubmit={handleSubmit}>
                     <input
                         type="text"
                         className='InputTxt bg-slate-100 px-4 m-3 rounded-lg h-[40px] focus:border-[#abafff] focus:outline-none border border-transparent transition-all duration-200'
