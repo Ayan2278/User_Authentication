@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     });
-
+    
     // Handle input change
     const handleChange = (e) => {
         setFormData({
@@ -14,7 +14,8 @@ const Login = () => {
             [e.target.name]: e.target.value
         });
     };
-
+    
+    const navigate = useNavigate(); 
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
@@ -34,7 +35,10 @@ const Login = () => {
             if (response.ok) {
                 setSuccess('Login successful! Redirecting...');
                 setError(' '); // Clear any previous errors
-                // Redirect or perform actions after successful login, e.g., redirect to another page
+                setTimeout(() => {
+                    navigate('/home'); // Change '/dashboard' to your desired route
+                }, 2000); // Redirect after 2 seconds
+    
             } else {
                 setError(data.error || 'An error occurred during login.');
             }
@@ -51,7 +55,7 @@ const Login = () => {
     };
 
     return (
-        <div className='flex justify-center items-center mx-9 h-[90vh]'>
+        <div className='flex justify-center items-center mx-9 h-[100vh]'>
             <div className="card w-[400px] h-[350px] flex justify-center items-center flex-col shadow-[0_4px_20px_rgba(0,0,0,0.15)] shadow-[#abafff] rounded-xl">
                 <h2 className='text-3xl my-3'>Login</h2>
                 <form className='flex flex-col w-[100%] justify-center' onSubmit={handleSubmit}>
