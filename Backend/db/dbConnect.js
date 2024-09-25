@@ -3,11 +3,8 @@ const mongoose = require('mongoose');
 // Function to connect to MongoDB
 const connectDB = async () => {
     try {
-        // Make sure to include the database name in the connection string
-        await mongoose.connect('mongodb://localhost:27017/firstpr', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        // Connect to MongoDB without the deprecated options
+        await mongoose.connect('mongodb://localhost:27017/firstpr');
         console.log("Connected to MongoDB");
     } catch (err) {
         console.error("Failed to connect to MongoDB", err);

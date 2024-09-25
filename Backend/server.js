@@ -1,27 +1,41 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const connectDB = require('./db/dbConnect');  // Import the database connection
-const User = require('./db/user');  // Import the User model
+const connectDB = require('./db/dbConnect');  
+const User = require('./db/user');  
 
-// Connect to MongoDB
 connectDB();
 
-app.use(express.json());  // Middleware to parse JSON requests
+app.use(express.json()); 
 
-// User registration route
 app.post('/register', async (req, res) => {
     try {
-        const { username, password } = req.body;  // Destructure the request body
-        console.log(req.body);  // Log request body for debugging
-        const user = new User({ username, password });  // Create a new User instance
-        await user.save();  // Save the user to the database
-        res.status(201).json({ message: "Successfully submitted" });  // Send success response
+        const { username, password } = req.body;  
+        console.log(req.body);  
+        const user = new User({ username, password });
+        await user.save();  
+        res.status(201).json({ message: "Successfully submitted" });
     } catch (err) {
-        console.error(err);  // Log any errors
-        res.status(500).json({ error: 'Registration failed' });  // Send error response
+        console.error(err);  
+        res.status(500).json({ error: 'Registration failed' });  
     }
 });
+app.post('/login', async (req, res) => {
+    try {
+        const { username, password } = req.body; 
+        const user = await User.findOne({ username });
+        if (!user) {  
+            return res.status(401).json({ error: 'Invalid credentials!' });
+        }
+        if(user.password !== password){
+            return res.status(401).json({ error: 'Invalid credentials!' }); 
+        }
+        res.json({ message: 'Logged in successfully' }); 
+    } catch (err) {
+        console.error(err); 
+        res.status(500).json({ error: 'Login failed' }); 
+    }
+})
 
 // Start the server
 app.listen(port, () => {
